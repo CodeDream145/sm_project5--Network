@@ -1,0 +1,116 @@
+
+{% extends "network/layout.html" %}
+
+{% block title %}
+    {{ user_profile.username }}
+{% endblock %}
+
+{% block body %}
+    <div class="profile_box">
+        <h1 class="center_text profile_name">{{ user_profile.username }}</h1>
+        <div class="follow_con center_text">
+            <div>
+                {% if user_profile.my_followings %}
+                    <p><span>{{ user_profile.my_followings.followings.count }}</span> Following</p>
+                {% else %}
+                    <p><span>0</span> Following</p>
+                {% endif %}
+            </div>
+            <div>
+                {% if user_profile.my_followers %}
+                    <p><span>{{ user_profile.my_followers.followers.count }}</span> Followers</p>
+                {% else %}
+                    <p><span>0</span> Followers</p>
+                {% endif %}
+            </div>
+        </div>
+        {% if user.is_authenticated and request.user != user_profile %}
+            {% if user in user_profile.my_followers.followers.all %}
+                <div class="follow_con center_text">
+                    <div>
+                        <form method="post" action="{% url 'unfollow' user_profile.username %}"> 
+                            {% csrf_token %}
+                            <button class="follow_button unfollow_button">Unfollow</button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="follow_con center_text">
+                    <div>
+                        <form method="post" action="{% url 'follow' user_profile.username %}"> 
+                            {% csrf_token %}
+                            <button type="submit" class="follow_button">Follow</button>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div class="profile_post_box_top">
+        <h3>Posts</h3>
+        {% if user_posts %}
+            {% for post in user_posts %}
+                <div class="profile_post_box">
+                    <h4 class="post-user"><a href="{% url 'profile_page' post.user %}">{{ post.user }}</a></h4>                    
+                    {% if post.user == request.user %}
+                        <a data-post="{{ post.id }}" id="edit-post">Edit</a>
+                    {% endif %}
+                    <div class="post_div" id="post_div_{{ post.id }}"><p id="post_content_{{ post.id }}" class="post-text">{{ post.post }}</p></div>
+                    
+                    {% if user.is_authenticated %}
+                        {% if post.likes %}
+                            {% if user in post.likes.liked_users.all %}
+                               <div class="like_area"><p><a class="img_link"><img id="like_img" alt="likes" data-post="{{ post.id }}" src="/static/network/images/liked.png" ></a><span class="like_count" id="likes_count_{{ post.id }}">{{post.likes.liked_users.count}}</span></p></div>
+                            {% else %}
+                                <div class="like_area"><p><a class="img_link"><img id="unlike_img" data-post="{{ post.id }}" alt="likes" src="/static/network/images/un_liked.png" ></a><span class="like_count" id="likes_count_{{ post.id }}">{{post.likes.liked_users.count}}</span></p></div>
+                            {% endif %}
+                        {% else %}
+                            <div class="like_area"><p><a class="img_link"><img id="unlike_img" data-post="{{ post.id }}" alt="likes" src="/static/network/images/un_liked.png" ></a><span  class="like_count" id="likes_count_{{ post.id }}">0</span></p></div>
+                        {% endif %}
+                    {% else %}
+                        {% if  post.likes.liked_users.all %}
+                            <div class="like_area"><p><a><img id = "unlike_img" alt="likes" src="/static/network/images/un_liked.png" ></a><span class="like_count">{{post.likes.liked_users.count}}</span></p></div>
+                        {% else %}
+                            <div class="like_area"><p><a><img id = "unlike_img" alt="likes" src="/static/network/images/un_liked.png" ></a><span class="like_count" >0</span></p></div>
+                        {% endif %}
+                    {% endif %}
+                    <h6 class="date-time">{{ post.timestamp }}</h6>
+                </div>
+            {% endfor %}
+
+            <div class="m-2">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        {% if user_posts.has_previous %}
+                            <a  class="page-link" href="?page={{ user_posts.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        {% endif %}
+                      </li>
+                        {% for page_num in user_posts.paginator.page_range %}
+                            {% if page_num == user_posts.number %}
+                                <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+                            {% elif user_posts.number > page_num|add:'-3' and user_posts.number < page_num|add:'3' %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                      <li class="page-item">
+                        {% if user_posts.has_next %}
+                            <a  class="page-link" href="?page={{ user_posts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        {% endif %}
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+        {% else %}
+            <br>
+            <h4 class="center_text">No Posts Yet</h4>
+        {% endif %}
+    </div>
+    
+
+    
+{% endblock %}

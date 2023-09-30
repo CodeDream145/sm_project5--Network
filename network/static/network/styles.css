@@ -1,0 +1,311 @@
+.post_line, .post_edit_line{
+    border: none;
+    background: none;
+    margin-left: 5px;
+    width: 800px;
+    font-size: 18px;
+    color: rgb(29, 27, 26);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.778);
+    transition: 0.3s ease;
+    resize: none;
+    overflow: hidden;
+    padding-bottom: 0px;
+}
+
+.post_line,.post_edit_line:focus {
+    outline: none;
+    border-bottom: 1px solid rgb(27, 27, 27);
+}
+
+.post_label{
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.post_box{
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 10px;
+    width: 1000px;
+}
+
+.post_button{
+    outline: 3px solid rgba(74, 127, 224, 0.993);
+    border: 2px solid rgba(72, 167, 255, 0.336);
+    border-radius: 12px;
+    font-weight: 600;
+    color: aliceblue;
+    background-color: rgb(70, 142, 250);
+    margin-top: 5px;
+
+}
+
+.post_button:hover{
+    outline: 3px solid rgba(72, 167, 255, 0.336);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgb(117, 168, 245);
+}
+
+.post_button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.74);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgba(89, 154, 252, 0.582);
+}
+
+#post_error_message{
+    margin-bottom : 0px;
+    display: none;
+    color: red;
+}
+
+#post_error_message1{
+    margin-bottom : 0px;
+    color: red;
+}
+
+.all_post_box {
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 10px;
+    width: 1000px;
+}
+
+.all_post_box + .all_post_box {
+    border-top: none;
+}
+
+.date-time{
+    font-size: 13px;
+    color: rgba(95, 95, 95, 0.89);
+}
+
+.post-text{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.post-user{
+    font-size: 20px;
+    color: rgb(70, 142, 250);
+    margin-bottom: 20px;
+}
+
+.follow_con{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+.center_text{
+    text-align: center;
+}
+
+.profile_box{
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 10px;
+    max-width: 1400px;
+    margin: auto;
+    margin-bottom: 30px;
+    
+}
+
+.profile_name{
+    color: rgb(70, 142, 250)
+}
+
+.profile_post_box_top{
+    border: 1px solid grey;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 2px;
+    padding: 10px;
+    max-width: 1400px;
+    margin: auto;
+    margin-bottom: 30px;
+    
+}
+
+.profile_post_box{
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding: 10px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.profile_post_box + .profile_post_box {
+    border-top: none;
+}
+
+/* Follow button */
+.follow_button{
+    outline: 3px solid rgba(74, 127, 224, 0.993);
+    border: 2px solid rgba(72, 167, 255, 0.336);
+    border-radius: 8px;
+    font-weight: 600;
+    color: aliceblue;
+    background-color: rgb(70, 142, 250);
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.follow_button:hover{
+    outline: 3px solid rgba(72, 167, 255, 0.336);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgb(117, 168, 245);
+}
+
+.follow_button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.74);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgba(89, 154, 252, 0.582);
+}
+
+/* unFollow button */
+.unfollow_button{
+    outline: 3px solid rgba(224, 74, 74, 0.692);
+    border: 2px solid rgba(255, 72, 72, 0.336);
+    background-color: rgb(236, 141, 141);
+
+}
+
+.unfollow_button:hover{
+    outline: 3px solid rgba(255, 72, 72, 0.336);
+    border: 2px solid rgba(224, 74, 74, 0.692);
+    background-color: rgb(243, 104, 104);
+}
+
+.unfollow_button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.74);
+    border: 2px solid rgba(224, 74, 74, 0.692);
+    background-color: rgb(233, 55, 55);
+}
+
+
+#edit-post{
+    color: rgb(114, 169, 231);
+    font-weight: 500
+}
+
+#edit-post:hover{
+    cursor: pointer;
+    color:rgb(69, 151, 245);
+}
+.edit_error_message{
+    margin-bottom : 0px;
+    display: none;
+    color: red;
+}
+
+.edit_error_message1{
+    margin-bottom : 0px;
+    color: red;
+}
+
+.off{
+    display: none;
+}
+
+.on{
+    display: block;
+}
+
+.post_con {
+    display: flex;
+    flex-direction: column;
+}
+
+.post_edit_line{
+    border: none;
+    background: none;
+    margin-left: 5px;
+    width: 800px;
+    font-size: 18px;
+    color: rgb(29, 27, 26);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.778);
+    transition: 0.3s ease;
+    resize: none;
+    overflow: hidden;
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+.edit_post_button{
+    outline: 3px solid rgba(74, 127, 224, 0.993);
+    border: 2px solid rgba(72, 167, 255, 0.336);
+    border-radius: 12px;
+    font-weight: 600;
+    color: aliceblue;
+    background-color: rgb(70, 142, 250);
+    margin-top: 5px;
+    margin-bottom: 7px;
+
+}
+.edit_post_button:hover{
+    outline: 3px solid rgba(72, 167, 255, 0.336);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgb(117, 168, 245);
+}
+
+.edit_post_button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.74);
+    border: 2px solid rgba(74, 127, 224, 0.993);
+    background-color: rgba(89, 154, 252, 0.582);
+}
+
+.img_link:hover{
+    cursor: pointer;
+}
+
+.like_count{
+    margin-left: 3px;
+}
+
+.like_area{
+    width: auto;
+    height: 28px;
+    margin-bottom: 7px;
+}
+
+#like_img, #unlike_img{
+    width: 25px;
+}
+
+@keyframes like_ani {
+    0%{
+        width: 25px;
+    }
+    50%{
+        width: 23px;
+    }
+    100%{
+        width: 25px;
+    }
+}
+
+@keyframes unlike_ani {
+    0%{
+        width: 25px;
+    }
+    50%{
+        width: 27px;
+    }
+    100%{
+        width: 25px;
+    }
+}
+
+.img_link img.liked{
+    animation: like_ani 0.5s;
+}
+
+.img_link img.unliked{
+    animation: unlike_ani 0.5s;
+}
